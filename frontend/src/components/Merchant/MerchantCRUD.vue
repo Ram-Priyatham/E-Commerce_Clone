@@ -6,7 +6,7 @@
           <button
             type="button"
             class="btn btn-secondary"
-            @click="$router.push('/merchant/addnewproduct')"
+            @click="$router.push('/merchantcrud/addnewproduct')"
           >
             Introduce a new product to market
           </button>
@@ -15,7 +15,7 @@
           <button
             type="button"
             class="btn btn-secondary"
-            @click="$router.push('/merchant/addproduct')"
+            @click="$router.push('/merchantcrud/addproduct')"
           >
             Add a new Product
           </button>
@@ -62,15 +62,15 @@ export default {
     ]),
     addnewProduct() {
       // router.push({ name: "AddProduct" });
-      this.$router.push({ path: "/merchant/addnewproduct" });
+      this.$router.push({ path: "/merchantcrud/addnewproduct" });
     },
     addProduct() {
       // router.push({ name: "AddProduct" });
-      this.$router.push({ path: "/merchant/addproduct" });
+      this.$router.push({ path: "/merchantcrud/addproduct" });
     },
     deleteProduct() {
       // this.deleteProductFromList();
-      this.$router.push({ path: "/merchant/deleteproduct" });
+      this.$router.push({ path: "/merchantcrud/deleteproduct" });
     },
     updateProduct() {
       // router.push({ name: "UpdateProduct" });
@@ -78,7 +78,7 @@ export default {
     },
     viewProducts() {
       // router.push({ name: "ProductList" });
-      this.$router.push({ path: "/merchant/viewproducts" });
+      this.$router.push({ path: "/merchantcrud/viewproducts" });
     },
   },
   computed: {
