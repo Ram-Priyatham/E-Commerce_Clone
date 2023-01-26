@@ -1,11 +1,10 @@
 <template>
-  <div>
+  <div class="container">
+    <div v-for="product in cartProducts" :key="product" class="inner">
+      <h2>{{ product.price }}</h2>
+    </div>
     <h1>CART PAGE</h1>
     {{ cartProducts }}
-    <!-- <div v-for="product in cartProducts" :key="product.id">
-      {{ product.productId }}, {{ product.productName }},
-      {{ product.category }}, {{ product.description }}, {{ product.price }},
-    </div> -->
   </div>
 </template>
 <script>
@@ -28,6 +27,7 @@ export default {
         this.cartProducts = res;
         console.log("CARTPRODUCTS", res);
       },
+      id: this.$globalData.userMail,
     });
   },
   methods: {

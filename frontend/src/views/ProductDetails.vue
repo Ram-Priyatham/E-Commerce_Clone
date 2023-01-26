@@ -25,13 +25,16 @@
           Specifications: {{ getProductDetail.description }}
         </p>
         <span class="product-price"
-          >Rs: {{ getProductMerchants[0].productPrice }}</span
+          >Rs:
+          {{
+            getProductMerchants[getProductMerchants.length - 1].productPrice
+          }}</span
         >
         <p class="product-stock">
           Stock available: {{ getProductMerchants[0].productStock }}
         </p>
 
-        <button class="btn btn-outline-secondary" onclick="cartData()">
+        <button class="btn btn-outline-secondary" @click="addToCart">
           Add to cart
         </button>
         <span style="visibility: hidden">jdhfv</span>
@@ -57,10 +60,12 @@ import { mapActions, mapGetters } from "vuex";
 export default {
   name: "ProductDetails",
   data() {
-    return {};
+    return {
+      index: 0,
+    };
   },
   computed: {
-    ...mapGetters(["getProductDetail", "getProductMerchants"]),
+    ...mapGetters(["getProductDetail", "getProductMerchants", "getCartList"]),
   },
   created: function () {
     this.$store.dispatch("getProductDetailApi", this.$route.params.productId),
@@ -72,9 +77,16 @@ export default {
   methods: {
     ...mapActions([
       "getProductDetailApi",
-      "SET_CART_LIST",
+      "setCartListApi",
       "getProductMerchantsApi",
     ]),
+    addToCart() {
+      console.log(this.getProductDetail.productId);
+      this.$store.dispatch("setCartListApi", {
+        id: this.getProductDetail.productId,
+        userId: this.$globalData.userMail,
+      });
+    },
   },
 };
 </script>

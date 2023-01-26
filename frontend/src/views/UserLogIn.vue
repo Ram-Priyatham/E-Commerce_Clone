@@ -65,7 +65,7 @@
 <script>
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
-import axios from "axios";
+// import axios from "axios";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 export default {
   name: "UserLogIn",
@@ -82,26 +82,6 @@ export default {
           .auth()
           .signInWithEmailAndPassword(this.email, this.password);
         alert("Logged in");
-        firebase.auth().onAuthStateChanged((user) => {
-          if (user) {
-            this.id = user.uid;
-            console.log("user id", this.id);
-            const requestBody = {
-              emailId: this.email,
-              firstName: this.username,
-              password: this.password,
-            };
-            axios
-              .post("api/users/addOrUpdateUser", requestBody)
-              .then((response) => {
-                console.log(response);
-                this.SET_USER_DETAILS(response.data);
-              })
-              .catch((error) => {
-                console.log(error);
-              });
-          }
-        });
         this.$globalData.userLogin = true;
         this.$globalData.userMail = this.email;
         alert(this.$globalData.userMail);
@@ -115,7 +95,9 @@ export default {
       signInWithPopup(getAuth(), provider)
         .then((result) => {
           console.log(result.user);
+          console.log(result.user.email);
           this.$globalData.userLogin = true;
+          this.$globalData.userMail = result.user.email;
           this.$router.push("/");
         })
         .catch((error) => {

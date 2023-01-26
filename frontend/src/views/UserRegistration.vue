@@ -76,7 +76,7 @@
                   class="btn btn-lg btn-google btn-login fw-bold text-uppercase"
                   @click="googleregisteruser"
                 >
-                  <i class="fab fa-google me-2"></i> Sign up with Google
+                  <i class="fab fa-google me-2"></i> Register with Google
                 </button>
               </div>
             </div>
@@ -147,14 +147,48 @@ export default {
       const provider = new GoogleAuthProvider();
       signInWithPopup(getAuth(), provider)
         .then((result) => {
-          console.log(result.user);
+          firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+              this.id = user.uid;
+              console.log("user id", this.id);
+              const requestBody = {
+                emailId: result.user.email,
+                firstName: result.user.displayName,
+                password: "",
+              };
+              axios
+                .post("api/users/addOrUpdateUser", requestBody)
+                .then((response) => {
+                  console.log(response);
+                  this.SET_USER_DETAILS(response.data);
+                })
+                .catch((error) => {
+                  console.log(error);
+                });
+            }
+          });
+          console.log("", result.user);
           this.$globalData.userLogin = true;
+          this.$globalData.userMail = result.user.email;
           this.$router.push("/");
         })
         .catch((error) => {
           console.log(error);
         });
     },
+    // registeruser() {
+    //   firebase
+    //     .auth()
+    //     .createUserWithEmailAndPassword(this.email, this.password)
+    //     .then(
+    //       function () {
+    //         alert("Your account has been created");
+    //       },
+    //       function (err) {
+    //         alert("Oops error occured" + err.message);
+    //       }
+    //     );
+    // },
   },
 };
 </script>
