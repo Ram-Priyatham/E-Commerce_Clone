@@ -33,7 +33,6 @@
         <p class="product-stock">
           Stock available: {{ getProductMerchants[0].productStock }}
         </p>
-
         <button class="btn btn-outline-secondary" @click="addToCart">
           Add to cart
         </button>

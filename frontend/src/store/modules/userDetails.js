@@ -9,9 +9,9 @@ export default {
     setDetails: (state, value) => (state.Details = value),
   },
   actions: {
-    getProfileDetails: ({ commit }, { success }) => {
-      fetch(`api/users/getUserById/${this.$globalData.userMail}`)
-        .then((resp) => resp)
+    getProfileDetails: ({ commit }, { success, uid }) => {
+      fetch(`api/users/getUserById/${uid}`)
+        .then((resp) => resp.json())
         .then((res) => {
           commit("setDetails", res);
           success && success(res);

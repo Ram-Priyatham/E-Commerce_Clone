@@ -2,8 +2,8 @@
   <div>
     <h1>My Profile</h1>
     <ul>
-      <li>Name: {{ this.userDetails.firstName }}</li>
-      <li>Email-ID: {{ this.userDetails.emailId }}</li>
+      <li>Name: {{ userDetails.firstName }}</li>
+      <li>Email-ID: {{ userDetails.emailId }}</li>
     </ul>
     {{ getOrders }}
   </div>
@@ -26,13 +26,14 @@ export default {
         this.userDetails = res;
         console.log("USER DETAILS", res);
       },
+      uid: this.$globalData.userMail,
     }),
-      this.$store.dispatch("getOrders", {
+      this.$store.dispatch("getOrderDetailsApi", {
         success: (res) => {
           this.orderDetails = res;
           console.log("ORDER DETAILS", res);
         },
-        id: this.$globalData.userMail,
+        uid: this.$globalData.userMail,
       });
   },
   methods: {

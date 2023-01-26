@@ -9,11 +9,11 @@ export default {
     setOrders: (state, value) => (state.orders = value),
   },
   actions: {
-    getOrderDetailsApi: ({ commit }, { success, id }) => {
-      fetch("api/cart/showOrderHistory/" + id)
-        .then((resp) => resp)
+    getOrderDetailsApi: ({ commit }, { success, uid }) => {
+      fetch(`api/cart/showOrderHistory/${uid}`)
+        .then((resp) => resp.json())
         .then((res) => {
-          commit("setDetails", res);
+          commit("setOrders", res);
           success && success(res);
         });
     },
