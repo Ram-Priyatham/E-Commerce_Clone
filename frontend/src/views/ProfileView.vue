@@ -1,20 +1,23 @@
 <template>
   <div>
     <h1>My Profile</h1>
-    {{ this.userDetails.emailId }}, {{ this.userDetails.firstName }},
-    {{ this.userDetails.lastName }},
-    {{ this.userDetails.phoneNumber }}
+    <ul>
+      <li>Name: {{ this.userDetails.firstName }}</li>
+      <li>Email-ID: {{ this.userDetails.emailId }}</li>
+    </ul>
+    {{ getOrders }}
   </div>
 </template>
 <script>
 import { mapActions, mapGetters } from "vuex";
 export default {
   computed: {
-    ...mapGetters(["getDetails"]),
+    ...mapGetters(["getDetails", "getOrders"]),
   },
   data() {
     return {
       userDetails: [],
+      orderDetails: [],
     };
   },
   created: function () {
@@ -23,10 +26,17 @@ export default {
         this.userDetails = res;
         console.log("USER DETAILS", res);
       },
-    });
+    }),
+      this.$store.dispatch("getOrders", {
+        success: (res) => {
+          this.orderDetails = res;
+          console.log("ORDER DETAILS", res);
+        },
+        id: this.$globalData.userMail,
+      });
   },
   methods: {
-    ...mapActions(["getProfileDetails"]),
+    ...mapActions(["getProfileDetails", "getOrderDetailsApi"]),
   },
 };
 </script>

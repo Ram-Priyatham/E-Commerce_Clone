@@ -16,6 +16,7 @@ import CartView from "../views/CartView.vue";
 import ProfileView from "../views/ProfileView.vue";
 import SignOut from "../components/SignOut.vue";
 import DeleteLoading from "../views/DeleteLoading.vue";
+import CheckOut from "../views/CheckOut.vue";
 
 Vue.use(VueRouter);
 
@@ -24,6 +25,11 @@ const routes = [
     path: "/",
     name: "home",
     component: HomeView,
+  },
+  {
+    path: "/checkout",
+    name: "checkout",
+    component: CheckOut,
   },
   {
     path: "/delete",

@@ -1,16 +1,16 @@
 export default {
   state: {
-    Details: [],
+    orders: [],
   },
   getters: {
-    getDetails: (state) => state.Details,
+    getOrders: (state) => state.orders,
   },
   mutations: {
-    setDetails: (state, value) => (state.Details = value),
+    setOrders: (state, value) => (state.orders = value),
   },
   actions: {
-    getProfileDetails: ({ commit }, { success }) => {
-      fetch(`api/users/getUserById/${this.$globalData.userMail}`)
+    getOrderDetailsApi: ({ commit }, { success, id }) => {
+      fetch("api/cart/showOrderHistory/" + id)
         .then((resp) => resp)
         .then((res) => {
           commit("setDetails", res);

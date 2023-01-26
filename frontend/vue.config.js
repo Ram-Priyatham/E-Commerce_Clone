@@ -18,7 +18,7 @@ module.exports = defineConfig({
         changeOrigin: true,
         pathRewrite: {'^/api' : ''},
       },
-      '^/api/users/addOrUpdateUser': {
+      '^/api/users': {
         target: 'http://10.20.5.13:8087',
         changeOrigin: true,
         pathRewrite: {'^/api' : ''},

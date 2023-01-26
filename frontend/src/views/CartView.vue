@@ -1,6 +1,14 @@
 <template>
   <div class="container">
-    <h1>Cart Page</h1>
+    <p>Total:</p>
+    <button
+      type="button"
+      class="btn btn-outline-success"
+      style="float: right"
+      @click="CheckoutPage"
+    >
+      Check out
+    </button>
     <div
       v-for="cartProd in cartProducts"
       :key="cartProd.merchantId"
@@ -84,6 +92,14 @@ export default {
           console.log(response);
         });
     },
+    CheckoutPage() {
+      axios
+        .put(`/api/cart/orderNow/${this.$globalData.userMail}`)
+        .then((response) => {
+          this.$router.push("/checkout");
+          console.log(response);
+        });
+    },
   },
 };
 </script>
@@ -118,7 +134,7 @@ img {
 #productss {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.239);
   border-radius: 8px;
-  height: 33vh;
+  height: 37vh;
   transition: 0.5s;
   width: 45vw;
 }
