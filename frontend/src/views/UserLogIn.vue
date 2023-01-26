@@ -81,6 +81,7 @@ export default {
           .auth()
           .signInWithEmailAndPassword(this.email, this.password);
         alert("Logged in");
+        this.$globalData.userLogin = true;
         this.$router.push("/");
       } catch (err) {
         alert("Not an Valid User");
@@ -91,6 +92,7 @@ export default {
       signInWithPopup(getAuth(), provider)
         .then((result) => {
           console.log(result.user);
+          this.$globalData.userLogin = true;
           this.$router.push("/");
         })
         .catch((error) => {

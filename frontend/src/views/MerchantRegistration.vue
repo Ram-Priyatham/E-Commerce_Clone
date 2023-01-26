@@ -138,6 +138,7 @@ export default {
 
         //console.log(user);
         alert("Registered New User");
+        this.$globalData.userLogin = true;
         this.$router.push("/merchantcrud");
       } catch (err) {
         console.log(err);
@@ -149,6 +150,7 @@ export default {
       signInWithPopup(getAuth(), provider)
         .then((result) => {
           console.log(result.user);
+          this.$globalData.userLogin = true;
           this.$router.push("/merchantcrud");
         })
         .catch((error) => {

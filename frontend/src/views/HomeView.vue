@@ -52,9 +52,10 @@
         <p>Apple watch Ultra</p>
       </div>
     </div>
-
-    <footer>
-      <p>Copyright 2023 | Ram Kolisetty</p>
+    <footer class="bg-light py-3">
+      <div class="container">
+        <p class="text-center text-muted">Copyright &copy; MobileDekho 2023</p>
+      </div>
     </footer>
   </div>
 </template>
@@ -71,9 +72,8 @@ export default {
 </script>
 
 <style>
-footer {
+/* footer {
   text-align: center;
-  /* position: sticky; */
   background-color: #294738cb;
   color: azure;
   position: relative;
@@ -81,7 +81,7 @@ footer {
   bottom: 0;
   width: 100%;
   height: 60px;
-}
+} */
 .image-slider {
   width: 100%;
   height: 300px;

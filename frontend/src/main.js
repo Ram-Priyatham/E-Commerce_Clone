@@ -10,6 +10,7 @@ import axios from "axios";
 Vue.prototype.$http = axios;
 Vue.config.productionTip = false;
 import "firebase/compat/database";
+// import { prototype } from "core-js/core/dict";
 // import { initializeApp } from "firebase/app";
 // import { createApp } from "vue";
 
@@ -18,6 +19,9 @@ import "firebase/compat/database";
 
 Vue.prototype.$axios = axios;
 Vue.config.productionTip = false;
+Vue.prototype.$globalData = {
+  userLogin: false,
+};
 
 const firebaseConfig = {
   apiKey: "AIzaSyAIEOmwR8DJ2ZgI5np1YrfUWA2Dcz7n1IE",

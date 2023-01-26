@@ -89,7 +89,7 @@
 
 <script>
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-// import axios from "axios";
+import axios from "axios";
 import { mapActions } from "vuex";
 // import firebase from "firebase/package.json";
 import firebase from "firebase/compat/app";
@@ -112,32 +112,29 @@ export default {
           .auth()
           .createUserWithEmailAndPassword(this.email, this.password);
         console.log(res);
-        // firebase.auth().onAuthStateChanged((user) => {
-        //   if (user) {
-        //     this.id = user.uid;
-        //     console.log("user id", this.id);
-        //     const requestBody = {
-        //       userId: this.id,
-        //       userName: this.name,
-        //       userEmail: this.email,
-        //       userPassword: this.password,
-        //       userAddress: this.address,
-        //       userPhoneNo: this.phoneNo,
-        //     };
-        //     axios
-        //       .post("http://10.20.5.40:8084/users/AddUserDetails", requestBody)
-        //       .then((response) => {
-        //         console.log(response);
-        //         this.SET_USER_DETAILS(response.data);
-        //       })
-        //       .catch((error) => {
-        //         console.log(error);
-        //       });
-        //   }
-        // });
-
+        firebase.auth().onAuthStateChanged((user) => {
+          if (user) {
+            this.id = user.uid;
+            console.log("user id", this.id);
+            const requestBody = {
+              emailId: this.email,
+              firstName: this.name,
+              password: this.password,
+            };
+            axios
+              .post("api/users/addOrUpdateUser", requestBody)
+              .then((response) => {
+                console.log(response);
+                this.SET_USER_DETAILS(response.data);
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+          }
+        });
         //console.log(user);
         alert("Registered New User");
+        this.$globalData.userLogin = true;
         this.$router.push("/");
       } catch (err) {
         console.log(err);
@@ -149,6 +146,7 @@ export default {
       signInWithPopup(getAuth(), provider)
         .then((result) => {
           console.log(result.user);
+          this.$globalData.userLogin = true;
           this.$router.push("/");
         })
         .catch((error) => {

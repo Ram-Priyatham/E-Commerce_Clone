@@ -5,9 +5,10 @@
         <center>
           <img :src="product.imgSrc" />
           <h5 style="text-align: center; padding-top: 4px">
-            {{ product.name }}
+            {{ product.brand }} {{ product.productName }}
           </h5>
           <p>{{ product.description }}</p>
+          <!-- <p>{{ product.brand }}</p> -->
           <p>Rs:{{ product.price }}</p>
         </center>
       </div>
@@ -72,11 +73,12 @@ img {
 #products {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.239);
   border-radius: 8px;
-  height: 45vh;
+  height: 50vh;
   transition: 0.5s;
 }
 #products:hover {
   transform: scale(1.08);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.518);
 }
 /* .button {
   background-color: #4caf50;

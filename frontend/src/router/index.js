@@ -14,6 +14,7 @@ import MerchantUpdateProducts from "../components/Merchant/MerchantUpdateProduct
 import MerchantViewProducts from "../components/Merchant/MerchantViewProducts.vue";
 import CartView from "../views/CartView.vue";
 import ProfileView from "../views/ProfileView.vue";
+import SignOut from "../components/SignOut.vue";
 
 Vue.use(VueRouter);
 
@@ -67,6 +68,11 @@ const routes = [
     path: "/merchantlogin",
     name: "merchantlogin",
     component: MerchantLogIn,
+  },
+  {
+    path: "/signout",
+    name: "signout",
+    component: SignOut,
   },
   {
     path: "/merchantregistration",

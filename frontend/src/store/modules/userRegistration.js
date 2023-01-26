@@ -1,19 +1,18 @@
 export default {
-    state: {
-      user: [],
+  state: {
+    user: [],
+  },
+  getters: {
+    getUserList: (state) => state.user,
+  },
+  mutations: {
+    setUserList(state, value) {
+      state.user = value;
     },
-    getters: {
-      getUserList: (state) => state.user,
+  },
+  actions: {
+    SET_USER_DETAILS: ({ commit }, user) => {
+      commit("setUserList", user);
     },
-    mutations: {
-      setUserList(state, value) {
-        state.user = value;
-      },
-    },
-    actions: {
-      SET_USER_DETAILS: ({ commit }, user) => {
-        commit("setUserList", user);
-      },
-    },
-  };
-  
+  },
+};

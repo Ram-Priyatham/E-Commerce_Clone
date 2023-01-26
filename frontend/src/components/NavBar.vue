@@ -14,8 +14,15 @@
   </div>
 </template> -->
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <router-link class="navbar-brand" to="/">Deals on Net</router-link>
+  <nav
+    class="navbar navbar-expand-lg navbar-light bg-light"
+    style="z-index: 99; position: sticky"
+  >
+    <router-link class="navbar-brand" to="/"
+      ><img
+        src="../assets/mobiledekho-logo.png"
+        style="height: 50px; width: 100px"
+    /></router-link>
     <!-- <a class="navbar-brand" href="#">Deals on Net</a> -->
     <button
       class="navbar-toggler"
@@ -58,36 +65,42 @@
             Cart
           </router-link>
         </li>
-
-        <li class="nav-item">
-          <router-link class="nav-link" to="/profile">Profile</router-link>
-        </li>
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            id="navbarDropdown"
-            role="button"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-            @click="toggleLoginDropdown"
-          >
-            Log In
-          </a>
-          <div
-            class="dropdown-menu"
-            aria-labelledby="navbarDropdown"
-            :style="isDropdownOpen ? 'display: block; right: 0;' : ''"
-          >
-            <router-link class="dropdown-item" to="/userlogin"
-              >User</router-link
+        <div v-if="this.$globalData.userLogin">
+          <li class="nav-item">
+            <router-link class="nav-link" to="/profile">Profile</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/signout">Sign Out</router-link>
+          </li>
+        </div>
+        <div v-else>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              @click="toggleLoginDropdown"
             >
-            <router-link class="dropdown-item" to="/merchantregistration"
-              >Merchant</router-link
+              Log In
+            </a>
+            <div
+              class="dropdown-menu"
+              aria-labelledby="navbarDropdown"
+              :style="isDropdownOpen ? 'display: block; right: 0;' : ''"
             >
-          </div>
-        </li>
+              <router-link class="dropdown-item" to="/userlogin"
+                >User</router-link
+              >
+              <router-link class="dropdown-item" to="/merchantregistration"
+                >Merchant</router-link
+              >
+            </div>
+          </li>
+        </div>
       </ul>
     </div>
   </nav>
