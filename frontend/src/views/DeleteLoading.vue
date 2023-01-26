@@ -8,7 +8,7 @@ export default {
   created: function () {
     setTimeout(() => {
       this.$router.push("/cart");
-    }, 500);
+    }, 20);
   },
 };
 </script>

@@ -20,6 +20,8 @@
           <p>Quantity: {{ cartProd.quantity }}</p>
           <p>Merchant ID: {{ cartProd.merchantId }}</p>
           <button
+            type="button"
+            class="btn btn-outline-danger"
             @click="
               DeleteFromCart(cartProd.product.productId, cartProd.merchantId)
             "
