@@ -83,8 +83,11 @@ export default {
     addToCart() {
       console.log(this.getProductDetail.productId);
       this.$store.dispatch("setCartListApi", {
-        id: this.getProductDetail.productId,
         userId: this.$globalData.userMail,
+        merchantid:
+          this.getProductMerchants[this.getProductMerchants.length - 1]
+            .merchantId,
+        id: this.getProductDetail.productId,
       });
     },
   },
