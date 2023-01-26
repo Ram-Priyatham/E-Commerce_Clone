@@ -37,7 +37,9 @@
           Add to cart
         </button>
         <span style="visibility: hidden">jdhfv</span>
-        <button class="btn btn-outline-success">Buy Now</button>
+        <button class="btn btn-outline-success" @click="CheckoutPage">
+          Buy Now
+        </button>
         <p id="seller">Other Sellers:</p>
         <ul>
           <li
@@ -55,7 +57,7 @@
 </template>
 <script>
 import { mapActions, mapGetters } from "vuex";
-// import axios from "axios";
+import axios from "axios";
 export default {
   name: "ProductDetails",
   data() {
@@ -88,6 +90,14 @@ export default {
             .merchantId,
         id: this.getProductDetail.productId,
       });
+    },
+    CheckoutPage() {
+      axios
+        .put(`/api/cart/orderNow/${this.$globalData.userMail}`)
+        .then((response) => {
+          this.$router.push("/checkout");
+          console.log(response);
+        });
     },
   },
 };
