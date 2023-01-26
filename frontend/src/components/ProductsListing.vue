@@ -1,6 +1,10 @@
 <template>
   <div class="container">
-    <div v-for="product in getProductsList" :key="product.id" class="inner">
+    <div
+      v-for="product in getProductsList"
+      :key="product.productId"
+      class="inner"
+    >
       <div id="products" @click="selectProducts(product)">
         <center>
           <img :src="product.imgSrc" />
@@ -8,9 +12,9 @@
             {{ product.brand }} {{ product.productName }}
           </h5>
           <p>{{ product.description }}</p>
-          <!-- <p>{{ product.brand }}</p> -->
-          <p>Rs:{{ product.price }}</p>
         </center>
+        <!-- <p>{{ merchant.productPrice }}</p> -->
+        <!-- {{ getProductsList }} -->
       </div>
     </div>
   </div>
@@ -22,26 +26,24 @@ export default {
   name: "ProductsListing",
   emits: ["product-selected"],
   computed: {
-    ...mapGetters(["getProductsList"]),
+    ...mapGetters(["getProductsList", "getProductPrice"]),
   },
   methods: {
-    ...mapActions(["getProductsListApi"]),
+    ...mapActions(["getProductsListApi", "getProductPriceApi"]),
     selectProducts(product) {
       console.log("from product listing", product);
       this.$emit("product-selected", product, "data");
     },
   },
   created: function () {
-    this.$store.dispatch("getProductListApi", {
-      success: (res) => {
-        this.productsList = res.products;
-        console.log(this.productsList);
-      },
-    });
+    this.$store.dispatch("getProductListApi");
+    this.$store.dispatch("getProductMerchantsApi");
   },
   data() {
     return {
       productsList: [],
+      data: [],
+      merchant: {},
     };
   },
 };
@@ -78,18 +80,17 @@ img {
 }
 #products:hover {
   transform: scale(1.08);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.518);
 }
 /* .button {
-  background-color: #4caf50;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-} */
+    background-color: #4caf50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  } */
 </style>

@@ -13,9 +13,10 @@ export default {
     return {};
   },
   methods: {
-    productSelected(product, msg) {
-      console.log(product, msg);
-      this.$router.push(`/products/${product.id}`);
+    productSelected(product) {
+      console.log(product);
+      this.$router.push(`/productDetails/${product.productId}`);
+      // this.$router.push(`/productDetails/${productMerchants.productId}`);
     },
   },
 };

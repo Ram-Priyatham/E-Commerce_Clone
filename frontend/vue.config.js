@@ -23,6 +23,11 @@ module.exports = defineConfig({
         changeOrigin: true,
         pathRewrite: {'^/api' : ''},
       },
+      "^/api/merchant": {
+        target: "http://10.20.5.13:8081",
+        changeOrigin: true,
+        pathRewrite: { "^/api": "" },
+      },
   }
 }
 });

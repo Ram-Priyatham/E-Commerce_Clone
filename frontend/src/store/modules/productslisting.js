@@ -11,13 +11,13 @@ export default {
     },
   },
   actions: {
-    getProductListApi: ({ commit }, { success }) => {
+    getProductListApi: ({ commit }) => {
       fetch("/api/products/allProducts")
         .then((response) => response.json())
         .then((res) => {
           console.log(res);
           commit("setProductsList", res);
-          success && success(res);
+          // success && success(res);
         });
     },
   },
