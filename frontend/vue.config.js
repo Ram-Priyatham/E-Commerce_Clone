@@ -9,7 +9,7 @@ module.exports = defineConfig({
         pathRewrite: {'^/api' : ''},
       },
       '^/api/cart': {
-        target: 'http://10.20.5.13:8085',
+        target: 'http://10.20.5.13:8092',
         changeOrigin: true,
         pathRewrite: {'^/api' : ''},
       },

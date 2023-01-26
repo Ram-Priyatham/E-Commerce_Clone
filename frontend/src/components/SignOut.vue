@@ -8,8 +8,9 @@ export default {
   },
   methods: {
     signOut() {
-      this.$store.commit("CLEAR_USER_DATA");
-      this.$globalData.notlogin = true;
+      // this.$store.commit("CLEAR_USER_DATA");
+      this.$globalData.userLogin = false;
+      this.$globalData.userMail = "";
       this.$router.push("/userlogin");
     },
   },

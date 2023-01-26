@@ -54,7 +54,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   margin: 3px;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   /* background-color: bisque; */
 }

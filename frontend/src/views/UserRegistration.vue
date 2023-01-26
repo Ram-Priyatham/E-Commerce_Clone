@@ -118,7 +118,7 @@ export default {
             console.log("user id", this.id);
             const requestBody = {
               emailId: this.email,
-              firstName: this.name,
+              firstName: this.username,
               password: this.password,
             };
             axios
@@ -135,6 +135,8 @@ export default {
         //console.log(user);
         alert("Registered New User");
         this.$globalData.userLogin = true;
+        this.$globalData.userMail = this.email;
+        alert(this.$globalData.userMail);
         this.$router.push("/");
       } catch (err) {
         console.log(err);
@@ -153,19 +155,6 @@ export default {
           console.log(error);
         });
     },
-    // registeruser() {
-    //   firebase
-    //     .auth()
-    //     .createUserWithEmailAndPassword(this.email, this.password)
-    //     .then(
-    //       function () {
-    //         alert("Your account has been created");
-    //       },
-    //       function (err) {
-    //         alert("Oops error occured" + err.message);
-    //       }
-    //     );
-    // },
   },
 };
 </script>

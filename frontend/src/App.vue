@@ -34,7 +34,7 @@ export default {
   color: #2c3e50; */
 }
 body {
-  background-color: rgba(240, 255, 240, 0.315);
+  background-color: rgba(240, 255, 240, 0.184);
 }
 nav {
   padding: 30px;

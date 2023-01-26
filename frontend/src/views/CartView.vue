@@ -1,10 +1,11 @@
 <template>
   <div>
     <h1>CART PAGE</h1>
-    <div v-for="product in cartProducts" :key="product.id">
+    {{ cartProducts }}
+    <!-- <div v-for="product in cartProducts" :key="product.id">
       {{ product.productId }}, {{ product.productName }},
       {{ product.category }}, {{ product.description }}, {{ product.price }},
-    </div>
+    </div> -->
   </div>
 </template>
 <script>
