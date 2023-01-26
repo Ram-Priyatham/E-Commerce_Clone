@@ -1,7 +1,15 @@
 <template>
   <div class="container">
-    <div v-for="product in cartProducts" :key="product" class="inner">
-      <h2>{{ product.price }}</h2>
+    <div v-for="cartProd in cartProducts" :key="cartProd" class="inner">
+      <div id="products" @click="selectProducts(product)">
+        <center>
+          <img :src="product.imgSrc" />
+          <h5 style="text-align: center; padding-top: 4px">
+            {{ product.brand }} {{ product.productName }}
+          </h5>
+          <p>{{ product.description }}</p>
+        </center>
+      </div>
     </div>
     <h1>CART PAGE</h1>
     {{ cartProducts }}
@@ -35,3 +43,4 @@ export default {
   },
 };
 </script>
+<style></style>

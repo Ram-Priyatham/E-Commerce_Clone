@@ -12,7 +12,7 @@ export default {
   },
   actions: {
     getProductListApi: ({ commit }) => {
-      fetch("/api/products/allProducts")
+      fetch("/api/products/allProductsWithPrice")
         .then((response) => response.json())
         .then((res) => {
           console.log(res);

@@ -12,6 +12,7 @@
             {{ product.brand }} {{ product.productName }}
           </h5>
           <p>{{ product.description }}</p>
+          <p>Rs: {{ product.productPrice }}</p>
         </center>
         <!-- <p>{{ merchant.productPrice }}</p> -->
         <!-- {{ getProductsList }} -->

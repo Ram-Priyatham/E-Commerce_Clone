@@ -59,12 +59,14 @@
         <!-- <li class="nav-item">
           <router-link class="nav-link" to="/cart">Cart</router-link>
         </li> -->
-        <li class="nav-item">
-          <router-link class="nav-link" to="/cart">
-            <i class="fas fa-shopping-cart"></i>
-            Cart
-          </router-link>
-        </li>
+        <div>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/cart">
+              <i class="fas fa-shopping-cart"></i>
+              Cart
+            </router-link>
+          </li>
+        </div>
         <div v-if="this.$globalData.userLogin">
           <li class="nav-item">
             <router-link class="nav-link" to="/profile">Profile</router-link>
