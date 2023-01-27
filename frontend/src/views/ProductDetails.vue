@@ -1,11 +1,5 @@
 <template>
   <div class="MyFirstView">
-    <!-- <h1>Product DETAILS Page</h1>
-    {{ getProductDetail }},
-    <h1>Merchant Details</h1>
-    {{ getProductMerchants }}
-    <button>Add to cart</button>
-    <button>Buy Now</button> -->
     <div
       class="prduct-details"
       style="display: flex; flex-wrap: wrap; margin-left: 8%"

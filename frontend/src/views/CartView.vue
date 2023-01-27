@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <p>Total:</p>
+    <p>Total: {{ total }}</p>
     <button
       type="button"
       class="btn btn-outline-success"
@@ -38,20 +38,8 @@
           </button>
         </div>
       </div>
-      <!-- <div v-for="cartProd in cartProducts" :key="cartProd" class="inner">
-      <div id="products">
-        <center>
-          <img :src="cartProd.product.imgSrc" />
-          <h5 style="text-align: center; padding-top: 4px">
-            {{ product.brand }} {{ product.productName }}
-          </h5>
-          <p>{{ product.description }}</p>
-        </center>
-      </div>
     </div>
-    <h1>CART PAGE</h1> -->
-    </div>
-    <!-- {{ cartProducts }} -->
+    {{ cartProducts }}
   </div>
 </template>
 <script>
@@ -60,11 +48,27 @@ import axios from "axios";
 export default {
   computed: {
     ...mapGetters(["getItemsCartList", "getProductMerchants"]),
+    calcSum() {
+      let total = 0;
+      this.cartProducts.forEach((item) => {
+        total += item.price;
+        console.log(total);
+      });
+      return total;
+    },
   },
+  // watch: {
+  //   calcSum: {
+  //     handler: function (total) {
+  //       this.totalVal = total;
+  //     },
+  //   },
+  // },
   data() {
     return {
       cartProducts: [],
       imgSrc: "",
+      total: 0,
     };
   },
   created: function () {

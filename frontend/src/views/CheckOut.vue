@@ -1,5 +1,17 @@
 <template>
-  <h1>Thank you for placing the Order</h1>
+  <div>
+    <div class="text-center">
+      <h1 class="display-3">
+        Thank You! <br />
+        Your order has been placed
+      </h1>
+      <p class="lead">
+        <strong>Please check your email for confirmation</strong>
+      </p>
+      <hr />
+      <p>Redirecting to home page</p>
+    </div>
+  </div>
 </template>
 
 <script>

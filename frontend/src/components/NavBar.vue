@@ -42,8 +42,12 @@
         placeholder="Search"
         aria-label="Search"
       />
-      <button class="btn btn-outline-success" type="submit">Search</button>
+      <button class="btn btn-outline-success" type="button">Search</button>
     </div>
+    <!-- <search-component
+      v-model="searchText"
+      @text-display="userQuery"
+    ></search-component> -->
     <div
       class="collapse navbar-collapse"
       id="navbarNav"
@@ -67,6 +71,9 @@
             </router-link>
           </li>
         </div>
+        <!-- {{
+          this.$globalData.userLogin
+        }} -->
         <div v-if="this.$globalData.userLogin">
           <li class="nav-item">
             <router-link class="nav-link" to="/profile">Profile</router-link>
@@ -93,6 +100,7 @@
               class="dropdown-menu"
               aria-labelledby="navbarDropdown"
               :style="isDropdownOpen ? 'display: block; right: 0;' : ''"
+              @click="toggleLoginDropdown"
             >
               <router-link class="dropdown-item" to="/userlogin"
                 >User</router-link
@@ -109,17 +117,50 @@
 </template>
 
 <script>
+// import SearchComponent from "./SearchComponent.vue";
 export default {
+  components: {},
   name: "NavBar",
   data() {
     return {
       isDropdownOpen: false,
+      // searchText: "",
+      // enteringText: "",
+      // searchProduct: true,
+      // productList: [],
+      // productListMaster: [],
     };
   },
   methods: {
     toggleLoginDropdown() {
+      console.log("Hiii");
       this.isDropdownOpen = !this.isDropdownOpen;
     },
+    // SearchQuery() {
+    //   // debugger;
+    //   if (this.searchText.length === 0) {
+    //     this.searchProduct = true;
+    //     this.productsList = JSON.parse(JSON.stringify(this.productsListMaster));
+    //   } else {
+    //     this.enteringText = this.searchText;
+    //     this.productsList = this.productsListMaster.filter((item) => {
+    //       return item.productName
+    //         .toLowerCase()
+    //         .includes(this.enteringText.toLowerCase());
+    //     });
+    //     this.searchProduct = true;
+    //   }
+    // },
+    // userQuery(bool, newVal) {
+    //   this.searchProduct = !bool;
+    //   this.searchText = newVal;
+    //   if (newVal.length >= 2) {
+    //     this.Searching();
+    //   } else {
+    //     this.searchProduct = true;
+    //     this.productsList = JSON.parse(JSON.stringify(this.productsListMaster));
+    //   }
+    // },
   },
   mounted() {},
 };

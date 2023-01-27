@@ -84,7 +84,7 @@ export default {
         alert("Logged in");
         this.$globalData.userLogin = true;
         this.$globalData.userMail = this.email;
-        alert(this.$globalData.userMail);
+        // alert(this.$globalData.userMail);
         this.$router.push("/");
       } catch (err) {
         alert("Not an Valid User");
@@ -98,6 +98,7 @@ export default {
           console.log(result.user.email);
           this.$globalData.userLogin = true;
           this.$globalData.userMail = result.user.email;
+          localStorage.setItem(this.$globalData.userMail, result.user.email);
           this.$router.push("/");
         })
         .catch((error) => {

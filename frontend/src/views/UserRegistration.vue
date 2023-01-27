@@ -136,7 +136,7 @@ export default {
         alert("Registered New User");
         this.$globalData.userLogin = true;
         this.$globalData.userMail = this.email;
-        alert(this.$globalData.userMail);
+        // alert(this.$globalData.userMail);
         this.$router.push("/");
       } catch (err) {
         console.log(err);

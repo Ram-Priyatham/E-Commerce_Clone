@@ -17,8 +17,8 @@ export default {
       images: [
         "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-14-pro-finish-unselect-gallery-1-202209_GEO_EMEA?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1660754213188",
         "https://www.apple.com/v/iphone-14/d/images/meta/iphone-14_specs__vb9ywiyto7mm_og.png",
-        "https://www.apple.com/v/macbook-pro-13/p/images/meta/macbook-pro-13_overview__bcsyunk73i2a_og.jpg",
-        "https://images.macrumors.com/t/azyR9txMs332yD0-lAtPlSLLF60=/2489x/article-new/2022/09/apple-watch-ultra-1.jpg",
+        "https://oasis.opstatics.com/content/dam/oasis/page/ovaltine/10t/images-design-black-1-mo-1.jpg.webp",
+        "https://www.91-cdn.com/hub/wp-content/uploads/2021/12/iQOO_9.jpg",
       ],
       timer: null,
       currentIndex: 0,
