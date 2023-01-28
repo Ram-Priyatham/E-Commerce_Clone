@@ -39,7 +39,7 @@
         </div>
       </div>
     </div>
-    {{ cartProducts }}
+    <!-- {{ cartProducts }} -->
   </div>
 </template>
 <script>
@@ -139,7 +139,7 @@ img {
 #productss {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.239);
   border-radius: 8px;
-  height: 37vh;
+  height: 40vh;
   transition: 0.5s;
   width: 45vw;
 }

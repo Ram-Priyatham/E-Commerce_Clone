@@ -4,13 +4,16 @@
       class="prduct-details"
       style="display: flex; flex-wrap: wrap; margin-left: 8%"
     >
-      <div style="width: 35vw; padding: 20px">
+      <div style="width: 35vw; padding: 20px; margin-top: 5%">
         <img
           :src="getProductDetail.imgSrc"
-          style="height: 70vh; width: 100%; border-radius: 16px"
+          style="height: 60vh; width: 100%; border-radius: 16px"
         />
       </div>
-      <div class="details" style="padding-left: 40px; margin-top: 7%">
+      <div
+        class="details"
+        style="padding-left: 40px; margin-top: 7%; width: 45%"
+      >
         <br /><br />
         <h2 class="product-brand" style="text-align: left">
           {{ getProductDetail.brand }} {{ getProductDetail.productName }}
