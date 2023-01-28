@@ -91,6 +91,7 @@ export default {
         .then((response) => {
           this.$router.push("/checkout");
           console.log(response);
+          console.log("hello");
         });
     },
   },
