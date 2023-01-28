@@ -26,7 +26,7 @@
           <p>{{ cartProd.product.description }}</p>
           <p>Rs: {{ cartProd.price }}</p>
           <p>Quantity: {{ cartProd.quantity }}</p>
-          <p>Merchant ID: {{ cartProd.merchantId }}</p>
+          <p>Merchant Name: {{ cartProd.merchantName }}</p>
           <button
             type="button"
             class="btn btn-outline-danger"
@@ -48,22 +48,7 @@ import axios from "axios";
 export default {
   computed: {
     ...mapGetters(["getItemsCartList", "getProductMerchants"]),
-    calcSum() {
-      let total = 0;
-      this.cartProducts.forEach((item) => {
-        total += item.price;
-        console.log(total);
-      });
-      return total;
-    },
   },
-  // watch: {
-  //   calcSum: {
-  //     handler: function (total) {
-  //       this.totalVal = total;
-  //     },
-  //   },
-  // },
   data() {
     return {
       cartProducts: [],
@@ -76,6 +61,10 @@ export default {
       success: (res) => {
         this.cartProducts = res;
         console.log("CARTPRODUCTS", res);
+        this.cartProducts.forEach(
+          (element) =>
+            (this.total = this.total + element.price * element.quantity)
+        );
       },
       id: this.$globalData.userMail,
     }),
@@ -96,6 +85,7 @@ export default {
           this.$router.push("/delete");
           console.log(response);
         });
+      alert("Deleted from Cart");
     },
     CheckoutPage() {
       axios
@@ -139,7 +129,7 @@ img {
 #productss {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.239);
   border-radius: 8px;
-  height: 40vh;
+  height: 48vh;
   transition: 0.5s;
   width: 45vw;
 }
