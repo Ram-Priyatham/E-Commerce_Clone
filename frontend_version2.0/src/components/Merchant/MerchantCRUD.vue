@@ -1,0 +1,111 @@
+<template>
+  <div>
+    <center v-if="!isMainRoute">
+      <div class="d-flex flex-column justify-content-center align-items-center">
+        <div class="p-2">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            @click="$router.push('/merchantcrud/addnewproduct')"
+          >
+            Add a new Product
+          </button>
+        </div>
+        <!-- <div class="p-2">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            @click="$router.push('/merchantcrud/addproduct')"
+          >
+            Add a new Product
+          </button>
+        </div> -->
+        <div class="p-2">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            @click="deleteProduct"
+          >
+            Delete a Product
+          </button>
+        </div>
+        <div class="p-2">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            @click="updateProduct"
+          >
+            Update the Stock
+          </button>
+        </div>
+        <div class="p-2">
+          <button type="button" class="btn btn-secondary" @click="viewProducts">
+            View Your Products
+          </button>
+        </div>
+        <div class="p-2">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            @click="viewAllProducts"
+          >
+            View All Products
+          </button>
+        </div>
+      </div>
+    </center>
+    <router-view />
+  </div>
+</template>
+
+<script>
+import { mapActions, mapState } from "vuex";
+// import router from "@/router";
+
+export default {
+  methods: {
+    ...mapActions([
+      "addProductToList",
+      "deleteProductFromList",
+      "updateProductOnList",
+    ]),
+    addnewProduct() {
+      // router.push({ name: "AddProduct" });
+      this.$router.push({ path: "/merchantcrud/addnewproduct" });
+    },
+    addProduct() {
+      // router.push({ name: "AddProduct" });
+      this.$router.push({ path: "/merchantcrud/addproduct" });
+    },
+    deleteProduct() {
+      // this.deleteProductFromList();
+      this.$router.push({ path: "/merchantcrud/deleteproduct" });
+    },
+    updateProduct() {
+      // router.push({ name: "UpdateProduct" });
+      this.$router.push({ path: "/merchantcrud/updateproduct" });
+    },
+    viewProducts() {
+      // router.push({ name: "ProductList" });
+      this.$router.push({ path: "/merchantcrud/viewproducts" });
+    },
+    viewAllProducts() {
+      // router.push({ name: "ProductList" });
+      this.$router.push({ path: "/merchantcrud/viewallproducts" });
+    },
+  },
+  computed: {
+    ...mapState(["products"]),
+    isMainRoute() {
+      return (
+        this.$route.path.includes("addnewproduct") ||
+        this.$route.path.includes("addproduct") ||
+        this.$route.path.includes("deleteproduct") ||
+        this.$route.path.includes("updateproduct") ||
+        this.$route.path.includes("viewproducts") ||
+        this.$route.path.includes("viewallproducts")
+      );
+    },
+  },
+};
+</script>
